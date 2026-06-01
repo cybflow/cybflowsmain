@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Cybflows — Hosting Guides &amp; Infrastructure Notes</title>
+  <meta name="description" content="Practical notes on hosting, performance, security, DNS, WordPress, and infrastructure decisions from the Cybflows team.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cybflows.com/blog/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog | Cybflows">
+  <meta property="og:description" content="Practical hosting guides and infrastructure notes.">
+  <meta property="og:url" content="https://cybflows.com/blog/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary navigation">
+      <a class="brand" href="/">CYBFLOWS</a>
+      <ul class="nav-links" role="list">
+        <li><a href="/web-hosting/">Web Hosting</a></li>
+        <li><a href="/vps-hosting/">VPS</a></li>
+        <li><a href="/cloud-hosting/">Cloud</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+      </ul>
+      <a class="account-btn" href="/whois/">WHOIS Lookup</a>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ── Mobile drawer ── -->
+  <div id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="drawer-head">
+      <a class="brand" href="/">CYBFLOWS</a>
+      <button class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <a href="/web-hosting/">Web Hosting</a>
+    <a href="/vps-hosting/">VPS Hosting</a>
+    <a href="/cloud-hosting/">Cloud Hosting</a>
+    <a href="/reseller-hosting/">Reseller Hosting</a>
+    <a href="/managed-wordpress-hosting/">Managed WordPress</a>
+    <a href="/blog/" aria-current="page">Blog</a>
+    <a href="/whois/">WHOIS Lookup</a>
+    <a class="account-btn" href="/whois/" style="margin-top:auto">WHOIS Lookup</a>
+  </div>
+  <div class="drawer-overlay" aria-hidden="true"></div>
+
+  <main id="main-content">
+
+    <!-- ── Hero ── -->
+    <section class="section service-hero container reveal" aria-labelledby="blog-heading">
+      <div>
+        <p class="eyebrow">Cybflows journal</p>
+        <h1 id="blog-heading">Blog</h1>
+        <p class="subhead">Practical notes on hosting, performance, security, DNS, WordPress, and infrastructure decisions.</p>
+        <p style="color:var(--muted);margin-top:.5rem;font-size:.9rem;">
+          {% if posts %}{{ posts|length }} post{{ posts|length|pluralize }} published{% else %}No posts yet{% endif %}
+        </p>
+      </div>
+      <div class="service-panel" aria-label="Blog highlights">
+        <div>
+          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"/>
+            <path d="M8 7h6"/><path d="M8 11h8"/>
+          </svg>
+          <strong>Guides</strong><span>Clear hosting tutorials</span>
+        </div>
+        <div>
+          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-6"/>
+          </svg>
+          <strong>Performance</strong><span>Optimization notes</span>
+        </div>
+        <div>
+          <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3l7 4v6c0 4.4-2.9 7.3-7 8-4.1-.7-7-3.6-7-8V7l7-4z"/>
+          </svg>
+          <strong>Security</strong><span>Reliability practices</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Post grid ── -->
+    <section class="section container reveal" aria-labelledby="posts-heading">
+      <p class="section-kicker">Latest posts</p>
+      <h2 id="posts-heading">Fresh infrastructure thinking.</h2>
+
+      {% if posts %}
+      <div class="blog-grid" role="list">
+        {% for post in posts %}
+        <article class="blog-card" role="listitem">
+          <time class="blog-card-date" datetime="{{ post.published_at|date:'Y-m-d' }}">
+            {{ post.published_at|date:"M d, Y" }}
+          </time>
+          <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+          {% if post.excerpt %}
+            <p class="blog-card-excerpt">{{ post.excerpt }}</p>
+          {% elif post.meta_description %}
+            <p class="blog-card-excerpt">{{ post.meta_description }}</p>
+          {% endif %}
+          <a class="table-cta" href="{{ post.get_absolute_url }}" aria-label="Read {{ post.title }}">Read →</a>
+        </article>
+        {% endfor %}
+      </div>
+
+      {% else %}
+      <!-- Empty state -->
+      <div class="blog-empty" role="status">
+        <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="width:48px;height:48px;margin-bottom:1rem;opacity:.3">
+          <path d="M4 19.5V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-1.5z"/>
+          <path d="M8 7h6"/><path d="M8 11h8"/>
+        </svg>
+        <h3>No posts published yet.</h3>
+        <p>Check back soon — we publish guides on hosting, performance, security, and infrastructure regularly.</p>
+        <a class="cta" href="/" style="margin-top:1rem">Back to homepage</a>
+      </div>
+      {% endif %}
+    </section>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">CYBFLOWS</a>
+        <p>Managed hosting infrastructure for businesses, developers, and agencies.</p>
+      </div>
+      <div>
+        <h3>Hosting</h3>
+        <a href="/web-hosting/">Web Hosting</a>
+        <a href="/vps-hosting/">VPS Hosting</a>
+        <a href="/cloud-hosting/">Cloud Hosting</a>
+        <a href="/reseller-hosting/">Reseller Hosting</a>
+        <a href="/managed-wordpress-hosting/">WordPress Hosting</a>
+      </div>
+      <div>
+        <h3>Tools</h3>
+        <a href="/whois/">WHOIS Lookup</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {% now "Y" %} Cybflows. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('show'); }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Mobile drawer
+    const toggle  = document.querySelector('.menu-toggle');
+    const drawer  = document.getElementById('mobile-drawer');
+    const overlay = document.querySelector('.drawer-overlay');
+    const closeBtn = document.querySelector('.drawer-close');
+
+    function openDrawer() {
+      drawer.classList.add('open');
+      overlay.classList.add('open');
+      document.body.classList.add('no-scroll');
+      toggle.setAttribute('aria-expanded', 'true');
+      closeBtn.focus();
+    }
+    function closeDrawer() {
+      drawer.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.focus();
+    }
+    toggle.addEventListener('click', openDrawer);
+    closeBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+  </script>
+</body>
+</html>

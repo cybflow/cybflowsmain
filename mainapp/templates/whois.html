@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHOIS Lookup | Cybflows</title>
+  <meta name="description" content="Look up IP address, DNS, approximate WHOIS location, organization, and registry data with the Cybflows WHOIS tool.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cybflows.com/whois/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="/">CYBFLOWS</a>
+      <a class="account-btn" href="/blog/">Blog</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section service-hero container reveal">
+      <div>
+        <p class="eyebrow">Network intelligence</p>
+        <h1>WHOIS Lookup</h1>
+        <p class="subhead">Resolve a domain or IP address, inspect registry ownership data, and see approximate WHOIS-based location details.</p>
+      </div>
+      <form class="whois-search" action="/whois/" method="get" role="search">
+        <label for="whois-query">Domain or IP address</label>
+        <div>
+          <input id="whois-query" name="q" type="search" value="{{ query }}" placeholder="example.com or 8.8.8.8" required>
+          <button class="cta blue-cta" type="submit">Search</button>
+        </div>
+      </form>
+    </section>
+
+    {% if error %}
+      <section class="container reveal">
+        <div class="notice-card">{{ error }}</div>
+      </section>
+    {% endif %}
+
+    {% if result %}
+      <section class="section container reveal">
+        <p class="section-kicker">Lookup result</p>
+        <h2>{{ result.target }}</h2>
+        <div class="lookup-grid">
+          <article><span>IP Address</span><strong>{{ result.ip_address }}</strong></article>
+          <article><span>Reverse DNS</span><strong>{{ result.reverse_dns }}</strong></article>
+          <article><span>Location</span><strong>{{ result.location }}</strong></article>
+          <article><span>Organization</span><strong>{{ result.organization }}</strong></article>
+        </div>
+      </section>
+
+      <section class="section container reveal">
+        <div class="split-section">
+          <div>
+            <p class="section-kicker">Server context</p>
+            <h2>Local resolver details.</h2>
+            <p class="section-copy">The lookup uses Python socket resolution and a local network configuration snapshot from the server environment.</p>
+            <div class="lookup-grid compact">
+              <article><span>Local IP</span><strong>{{ result.local_ip }}</strong></article>
+            </div>
+          </div>
+          <pre class="code-panel">{{ result.network_config }}</pre>
+        </div>
+      </section>
+
+      <section class="section container reveal">
+        <p class="section-kicker">WHOIS data</p>
+        <h2>Registry response.</h2>
+        <pre class="code-panel large">{{ result.whois }}</pre>
+      </section>
+    {% endif %}
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,472 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybflows | Premium Hosting Infrastructure</title>
+  <meta name="description" content="Cybflows delivers high-performance hosting with enterprise reliability and transparent pricing.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cybflows.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="#home">CYBFLOWS</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links" role="menubar">
+        <li><a role="menuitem" href="#home">Home</a></li>
+        <li class="has-mega" data-mega="services">
+          <button class="nav-trigger" aria-expanded="false" aria-controls="servicesMega">Services <span class="ios-arrow" aria-hidden="true">‹</span></button>
+          <section class="mega-menu" id="servicesMega" aria-label="Services mega menu">
+            <div class="mega-grid three">
+              <div>
+                <h3>Create &amp; Deploy</h3>
+                <a href="/cloud-hosting/" class="mega-item"><span class="dot"></span><strong>Cloud Hosting</strong><small>Scalable infrastructure for growing businesses.</small></a>
+                <a href="/vps-hosting/" class="mega-item"><span class="dot"></span><strong>VPS Hosting</strong><small>Dedicated resources with complete control.</small></a>
+                <a href="/web-hosting/" class="mega-item"><span class="dot"></span><strong>Web Hosting</strong><small>Fast and reliable hosting for websites.</small></a>
+                <a href="/reseller-hosting/" class="mega-item"><span class="dot"></span><strong>Reseller Hosting</strong><small>Start your own hosting business.</small></a>
+              </div>
+              <div>
+                <h3>Migrate &amp; WordPress</h3>
+                <a href="/managed-wordpress-hosting/" class="mega-item"><span class="dot"></span><strong>Managed WordPress Hosting</strong><small>Optimized hosting built for WordPress.</small></a>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>Migrate a Website</strong><small>Free migration handled by experts.</small></a>
+              </div>
+              <div>
+                <h3>Domains</h3>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>Domain Search</strong><small>Find the perfect domain name.</small></a>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>Domain Transfer</strong><small>Transfer your domain seamlessly.</small></a>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>SSL Certificates</strong><small>Secure your website and visitors.</small></a>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="has-mega" data-mega="explore">
+          <button class="nav-trigger" aria-expanded="false" aria-controls="exploreMega">Explore <span class="ios-arrow" aria-hidden="true">‹</span></button>
+          <section class="mega-menu" id="exploreMega" aria-label="Explore mega menu">
+            <div class="mega-grid two">
+              <div>
+                <h3>Support</h3>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>WhatsApp Support</strong><small>Instant assistance from our team.</small></a>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>Email Support</strong><small>Professional support via email.</small></a>
+                <a href="/whois/" class="mega-item"><span class="dot"></span><strong>WHOIS Lookup</strong><small>Inspect IP, location, and registry data.</small></a>
+              </div>
+              <div>
+                <h3>Knowledge Base</h3>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>Knowledge Base</strong><small>Comprehensive documentation.</small></a>
+                <a href="#" class="mega-item"><span class="dot"></span><strong>Tutorials</strong><small>Step-by-step learning resources.</small></a>
+                <a href="/blog/" class="mega-item"><span class="dot"></span><strong>Blogs</strong><small>Industry news and hosting guides.</small></a>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li><a role="menuitem" href="#pricing">Pricing</a></li>
+        <li><a role="menuitem" href="#contact">Contact</a></li>
+      </ul>
+
+      <a class="account-btn" href="#">My Account</a>
+    </nav>
+  </header>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <strong>CYBFLOWS</strong>
+      <button id="menuClose" aria-label="Close menu">Close</button>
+    </div>
+    <a href="#home">Home</a>
+    <details>
+      <summary>Services</summary>
+      <a href="/cloud-hosting/">Cloud Hosting</a>
+      <a href="/vps-hosting/">VPS Hosting</a>
+      <a href="/web-hosting/">Web Hosting</a>
+      <a href="/reseller-hosting/">Reseller Hosting</a>
+      <a href="/managed-wordpress-hosting/">Managed WordPress Hosting</a>
+    </details>
+    <details>
+      <summary>Explore</summary>
+      <a href="#">Support</a>
+      <a href="#">Knowledge Base</a>
+      <a href="#">Tutorials</a>
+      <a href="/whois/">WHOIS Lookup</a>
+      <a href="/blog/">Blogs</a>
+    </details>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a class="account-btn" href="#">My Account</a>
+  </aside>
+
+  <main id="home">
+    <section class="section hero container reveal">
+      <div class="hero-copy">
+        <p class="eyebrow">Maximum performance per dollar</p>
+        <h1>Cybflows Hosting</h1>
+        <p class="subhead">Premium infrastructure for modern businesses that expect speed, resilience, and beautifully simple operations.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#pricing">Start Hosting</a>
+          <a class="ghost" href="#pricing">View Pricing</a>
+        </div>
+      </div>
+      <div class="hero-media" aria-hidden="true">
+        <picture>
+          <source srcset="{% static 'images/optimized/hero-home.webp' %}" type="image/webp">
+          <img src="{% static 'images/images/hero-home.png' %}" alt="" width="1040" height="711" fetchpriority="high">
+        </picture>
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <div class="trust-strip" aria-label="Cybflows platform highlights">
+        <div><strong>99.99%</strong><span>Uptime target</span></div>
+        <div><strong>&lt;50ms</strong><span>Edge-ready latency</span></div>
+        <div><strong>24/7</strong><span>Expert support</span></div>
+        <div><strong>NVMe</strong><span>Fast storage layer</span></div>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="features">
+      <p class="section-kicker">Designed for confidence</p>
+      <h2>Every layer tuned for a calmer hosting experience.</h2>
+      <p class="section-copy">Cybflows keeps the interface quiet and the infrastructure serious, so teams can launch, monitor, and scale without friction.</p>
+      <div class="cards three">
+        <article class="feature-card">
+          <h3>High Performance Stack</h3>
+          <p>NVMe-backed infrastructure, optimized runtime, and low latency routing for consistently fast delivery.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Security Built In</h3>
+          <p>DDoS mitigation, SSL, isolated workloads, and proactive monitoring to keep workloads protected.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Effortless Scaling</h3>
+          <p>Upgrade resources instantly and handle traffic spikes without re-architecting your deployment pipeline.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <div class="split-section">
+        <div>
+          <p class="section-kicker">Performance architecture</p>
+          <h2>Fast by default, measured where it matters.</h2>
+          <p class="section-copy">We combine NVMe storage, optimized caching, resilient routing, and practical monitoring so production workloads stay responsive under pressure.</p>
+        </div>
+        <div class="spec-list">
+          <div><span>01</span><strong>Low latency routing</strong><p>Traffic is directed through efficient paths with fewer bottlenecks.</p></div>
+          <div><span>02</span><strong>Smart resource scaling</strong><p>Upgrade compute, memory, and storage without rebuilding your stack.</p></div>
+          <div><span>03</span><strong>Clear observability</strong><p>Understand uptime, response times, backups, and resource usage at a glance.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <div class="luxury-band">
+        <p class="section-kicker">White-glove migration</p>
+        <h2>Move to Cybflows without carrying the mess with you.</h2>
+        <p>Our migration workflow is built for business continuity: assessment, backup, transfer, validation, DNS cutover, and post-launch monitoring.</p>
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <p class="section-kicker">Operational trust</p>
+      <h2>Security and support that feel precise, not noisy.</h2>
+      <div class="cards three">
+        <article class="feature-card">
+          <h3>Secure Foundation</h3>
+          <p>SSL, DDoS mitigation, isolated workloads, and backup routines are part of the baseline.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Human Support</h3>
+          <p>Get direct, technical answers from a team that understands production hosting.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Transparent Growth</h3>
+          <p>Scale with predictable pricing and practical guidance before traffic spikes become expensive.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <p class="section-kicker">Launch process</p>
+      <h2>From first deploy to steady scale.</h2>
+      <div class="process-grid">
+        <article><span>01</span><h3>Choose</h3><p>Select a hosting tier aligned to your current workload.</p></article>
+        <article><span>02</span><h3>Deploy</h3><p>Launch with SSL, backups, and performance defaults already in place.</p></article>
+        <article><span>03</span><h3>Optimize</h3><p>Use monitoring signals to tune resources and reduce waste.</p></article>
+        <article><span>04</span><h3>Scale</h3><p>Expand confidently with support and capacity planning.</p></article>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="pricing">
+      <div class="pricing-head">
+        <h2>Hosting Plans</h2>
+        <div class="pricing-tabs" role="tablist" aria-label="Hosting categories">
+          <button role="tab" id="tab-web" aria-controls="pricingPanel" aria-selected="true" class="pricing-tab active" data-plan="web">Web Hosting</button>
+          <button role="tab" id="tab-cloud" aria-controls="pricingPanel" aria-selected="false" tabindex="-1" class="pricing-tab" data-plan="cloud">Cloud Hosting</button>
+          <button role="tab" id="tab-vps" aria-controls="pricingPanel" aria-selected="false" tabindex="-1" class="pricing-tab" data-plan="vps">VPS Hosting</button>
+          <button role="tab" id="tab-reseller" aria-controls="pricingPanel" aria-selected="false" tabindex="-1" class="pricing-tab" data-plan="reseller">Reseller Hosting</button>
+        </div>
+      </div>
+
+      <div id="pricingPanel" class="pricing-panel" role="tabpanel" aria-labelledby="tab-web">
+        <div class="cards three" id="pricingCards"></div>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="testimonials">
+      <p class="section-kicker">Customer signal</p>
+      <h2>Trusted by teams that care about uptime and polish.</h2>
+      <div class="testimonial-marquee" aria-label="Customer testimonials">
+        <div class="testimonial-track">
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/priya-sharma.webp' %}" alt="Priya Sharma" width="128" height="128" loading="lazy">
+            <p>"Cybflows cut our average response times dramatically and made deployments feel effortless."</p>
+            <strong>Priya Sharma</strong>
+            <span>Product Lead</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/daniel-reed.webp' %}" alt="Daniel Reed" width="128" height="128" loading="lazy">
+            <p>"The reliability is exceptional, and support responds with practical solutions in minutes."</p>
+            <strong>Daniel Reed</strong>
+            <span>Agency Founder</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/ayesha-mehta.webp' %}" alt="Ayesha Mehta" width="128" height="128" loading="lazy">
+            <p>"We scaled traffic 4x during campaign week with zero downtime and predictable costs."</p>
+            <strong>Ayesha Mehta</strong>
+            <span>E-commerce Manager</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/marcus-chen.webp' %}" alt="Marcus Chen" width="128" height="128" loading="lazy">
+            <p>"Transparent pricing made infrastructure planning far easier for our engineering team."</p>
+            <strong>Marcus Chen</strong>
+            <span>Engineering Manager</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/leah-morgan.webp' %}" alt="Leah Morgan" width="128" height="128" loading="lazy">
+            <p>"Migration was handled cleanly, and our site felt noticeably faster the same day."</p>
+            <strong>Leah Morgan</strong>
+            <span>Operations Director</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/priya-sharma.webp' %}" alt="" aria-hidden="true" width="128" height="128" loading="lazy">
+            <p>"Cybflows cut our average response times dramatically and made deployments feel effortless."</p>
+            <strong>Priya Sharma</strong>
+            <span>Product Lead</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/daniel-reed.webp' %}" alt="" aria-hidden="true" width="128" height="128" loading="lazy">
+            <p>"The reliability is exceptional, and support responds with practical solutions in minutes."</p>
+            <strong>Daniel Reed</strong>
+            <span>Agency Founder</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/ayesha-mehta.webp' %}" alt="" aria-hidden="true" width="128" height="128" loading="lazy">
+            <p>"We scaled traffic 4x during campaign week with zero downtime and predictable costs."</p>
+            <strong>Ayesha Mehta</strong>
+            <span>E-commerce Manager</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/marcus-chen.webp' %}" alt="" aria-hidden="true" width="128" height="128" loading="lazy">
+            <p>"Transparent pricing made infrastructure planning far easier for our engineering team."</p>
+            <strong>Marcus Chen</strong>
+            <span>Engineering Manager</span>
+          </article>
+          <article class="testimonial-card">
+            <img src="{% static 'images/optimized/leah-morgan.webp' %}" alt="" aria-hidden="true" width="128" height="128" loading="lazy">
+            <p>"Migration was handled cleanly, and our site felt noticeably faster the same day."</p>
+            <strong>Leah Morgan</strong>
+            <span>Operations Director</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <div class="final-cta">
+        <p class="section-kicker">Ready when you are</p>
+        <h2>Host with the calm confidence of infrastructure that has already been thought through.</h2>
+        <div class="hero-actions">
+          <a class="cta blue-cta" href="#pricing">Compare Plans</a>
+          <a class="ghost" href="#contact">Talk to Sales</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="contact">
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h2>Contact Us</h2>
+          <p>Tell us what you are building and we will recommend the right hosting plan.</p>
+          <form class="contact-form" action="#" method="post">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit" class="cta">Send Message</button>
+          </form>
+        </div>
+        <div class="map-card">
+          <iframe
+            title="Cybflows location map"
+            src="https://maps.google.com/maps?q=San%20Francisco&t=&z=11&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#home">CYBFLOWS</a>
+        <p>Premium hosting infrastructure built around speed, reliability, and maximum performance per dollar.</p>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <a href="/web-hosting/">Web Hosting</a>
+        <a href="/cloud-hosting/">Cloud Hosting</a>
+        <a href="/vps-hosting/">VPS Hosting</a>
+        <a href="/reseller-hosting/">Reseller Hosting</a>
+      </div>
+      <div>
+        <h3>Explore</h3>
+        <a href="#features">Features</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+        <a href="/whois/">WHOIS Lookup</a>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="#">About</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Status</a>
+      </div>
+      <p class="footer-bottom">Cybflows &copy; 2026. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const navGroups = document.querySelectorAll('.has-mega');
+    navGroups.forEach((group) => {
+      const trigger = group.querySelector('.nav-trigger');
+      group.addEventListener('mouseenter', () => trigger.setAttribute('aria-expanded', 'true'));
+      group.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded', 'false'));
+      trigger.addEventListener('focus', () => trigger.setAttribute('aria-expanded', 'true'));
+      group.addEventListener('focusout', (event) => {
+        if (!group.contains(event.relatedTarget)) trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const drawer = document.getElementById('mobileDrawer');
+    const setDrawer = (open) => {
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', String(!open));
+      menuToggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('no-scroll', open);
+    };
+    menuToggle.addEventListener('click', () => setDrawer(true));
+    menuClose.addEventListener('click', () => setDrawer(false));
+
+    const planData = {
+      web: [
+        { name: 'Starter', price: '$8/mo', storage: '20 GB SSD', bandwidth: 'Unlimited', support: 'Email Support', features: ['Free SSL', 'Daily Backups'] },
+        { name: 'Business', price: '$18/mo', storage: '80 GB SSD', bandwidth: 'Unlimited', support: 'Priority Support', features: ['Free Domain', 'Staging Tools'], recommended: true },
+        { name: 'Enterprise', price: '$39/mo', storage: '200 GB SSD', bandwidth: 'Unlimited', support: '24/7 Expert Support', features: ['Advanced Security', 'Performance Tuning'] }
+      ],
+      cloud: [
+        { name: 'Starter', price: '$14/mo', storage: '40 GB NVMe', bandwidth: '2 TB', support: 'Email Support', features: ['Auto Scaling Ready', 'Snapshots'] },
+        { name: 'Business', price: '$32/mo', storage: '120 GB NVMe', bandwidth: '5 TB', support: 'Priority Support', features: ['Load Balancing', 'Managed Updates'], recommended: true },
+        { name: 'Enterprise', price: '$79/mo', storage: '300 GB NVMe', bandwidth: '10 TB', support: '24/7 Expert Support', features: ['Dedicated Resources', 'SLA 99.99%'] }
+      ],
+      vps: [
+        { name: 'Starter', price: '$22/mo', storage: '60 GB NVMe', bandwidth: '3 TB', support: 'Email Support', features: ['Root Access', 'Firewall Included'] },
+        { name: 'Business', price: '$48/mo', storage: '160 GB NVMe', bandwidth: '6 TB', support: 'Priority Support', features: ['Dedicated IP', 'Auto Backups'], recommended: true },
+        { name: 'Enterprise', price: '$119/mo', storage: '400 GB NVMe', bandwidth: '12 TB', support: '24/7 Expert Support', features: ['High Availability', 'Custom Networking'] }
+      ],
+      reseller: [
+        { name: 'Starter', price: '$15/mo', storage: '50 GB SSD', bandwidth: 'Unlimited', support: 'Email Support', features: ['White Label', 'cPanel Access'] },
+        { name: 'Business', price: '$34/mo', storage: '140 GB SSD', bandwidth: 'Unlimited', support: 'Priority Support', features: ['WHM Included', 'Private Nameservers'], recommended: true },
+        { name: 'Enterprise', price: '$74/mo', storage: '320 GB SSD', bandwidth: 'Unlimited', support: '24/7 Expert Support', features: ['Advanced Branding', 'Reseller API'] }
+      ]
+    };
+
+    const pricingTabs = Array.from(document.querySelectorAll('.pricing-tab'));
+    const pricingCards = document.getElementById('pricingCards');
+    const pricingPanel = document.getElementById('pricingPanel');
+
+    function renderPlans(planKey) {
+      pricingPanel.classList.remove('show');
+      const plans = planData[planKey];
+      pricingCards.innerHTML = plans.map((plan) => `
+        <article class="plan-card ${plan.recommended ? 'recommended' : ''}">
+          <p class="plan-name">${plan.name}</p>
+          <p class="plan-price">${plan.price}</p>
+          <ul>
+            <li>Storage: ${plan.storage}</li>
+            <li>Bandwidth: ${plan.bandwidth}</li>
+            <li>Support: ${plan.support}</li>
+            <li>${plan.features[0]}</li>
+            <li>${plan.features[1]}</li>
+          </ul>
+          <a class="cta" href="#">Choose Plan</a>
+        </article>
+      `).join('');
+      requestAnimationFrame(() => pricingPanel.classList.add('show'));
+    }
+
+    function activateTab(tab) {
+      pricingTabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+      });
+      pricingPanel.setAttribute('aria-labelledby', tab.id);
+      renderPlans(tab.dataset.plan);
+    }
+
+    pricingTabs.forEach((tab) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        const index = pricingTabs.indexOf(tab);
+        let target = null;
+        if (event.key === 'ArrowRight') target = pricingTabs[(index + 1) % pricingTabs.length];
+        if (event.key === 'ArrowLeft') target = pricingTabs[(index - 1 + pricingTabs.length) % pricingTabs.length];
+        if (target) {
+          event.preventDefault();
+          target.focus();
+          activateTab(target);
+        }
+      });
+    });
+
+    renderPlans('web');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cybflows | {{ service.title }}</title>
+  <meta name="description" content="{{ service.description }}">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cybflows.com/{{ slug }}/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="/">CYBFLOWS</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" role="menubar">
+        <li><a role="menuitem" href="/">Home</a></li>
+        <li class="has-mega">
+          <button class="nav-trigger" aria-expanded="false" aria-controls="servicesMega">Services <span class="ios-arrow" aria-hidden="true">‹</span></button>
+          <section class="mega-menu" id="servicesMega" aria-label="Services mega menu">
+            <div class="mega-grid three">
+              <div>
+                <h3>Create &amp; Deploy</h3>
+                <a href="/cloud-hosting/" class="mega-item"><span class="dot"></span><strong>Cloud Hosting</strong><small>Scalable infrastructure for growing businesses.</small></a>
+                <a href="/vps-hosting/" class="mega-item"><span class="dot"></span><strong>VPS Hosting</strong><small>Dedicated resources with complete control.</small></a>
+                <a href="/web-hosting/" class="mega-item"><span class="dot"></span><strong>Web Hosting</strong><small>Fast and reliable hosting for websites.</small></a>
+                <a href="/reseller-hosting/" class="mega-item"><span class="dot"></span><strong>Reseller Hosting</strong><small>Start your own hosting business.</small></a>
+              </div>
+              <div>
+                <h3>WordPress</h3>
+                <a href="/managed-wordpress-hosting/" class="mega-item"><span class="dot"></span><strong>Managed WordPress Hosting</strong><small>Optimized hosting built for WordPress.</small></a>
+                <a href="/#contact" class="mega-item"><span class="dot"></span><strong>Migrate a Website</strong><small>Free migration handled by experts.</small></a>
+              </div>
+              <div>
+                <h3>Help</h3>
+                <a href="/#pricing" class="mega-item"><span class="dot"></span><strong>Compare Plans</strong><small>Find the right plan for your workload.</small></a>
+                <a href="/#contact" class="mega-item"><span class="dot"></span><strong>Contact Sales</strong><small>Get sizing guidance from our team.</small></a>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li><a role="menuitem" href="/#pricing">Pricing</a></li>
+        <li><a role="menuitem" href="/whois/">WHOIS</a></li>
+        <li><a role="menuitem" href="/blog/">Blog</a></li>
+        <li><a role="menuitem" href="/#contact">Contact</a></li>
+      </ul>
+      <a class="account-btn" href="#">My Account</a>
+    </nav>
+  </header>
+
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <strong>CYBFLOWS</strong>
+      <button id="menuClose" aria-label="Close menu">Close</button>
+    </div>
+    <a href="/">Home</a>
+    <details open>
+      <summary>Services</summary>
+      <a href="/cloud-hosting/">Cloud Hosting</a>
+      <a href="/vps-hosting/">VPS Hosting</a>
+      <a href="/web-hosting/">Web Hosting</a>
+      <a href="/reseller-hosting/">Reseller Hosting</a>
+      <a href="/managed-wordpress-hosting/">Managed WordPress Hosting</a>
+    </details>
+    <a href="/#pricing">Pricing</a>
+    <a href="/whois/">WHOIS</a>
+    <a href="/blog/">Blog</a>
+    <a href="/#contact">Contact</a>
+    <a class="account-btn" href="#">My Account</a>
+  </aside>
+
+  <main>
+    <section class="section service-hero container reveal">
+      <div>
+        <p class="eyebrow">{{ service.eyebrow }}</p>
+        <h1>{{ service.title }}</h1>
+        <p class="subhead">{{ service.description }}</p>
+        <div class="hero-actions">
+          <a class="cta blue-cta" href="#service-pricing">Sign Up</a>
+          <a class="ghost" href="#service-overview">Learn More</a>
+        </div>
+      </div>
+      <div class="service-panel" aria-label="{{ service.title }} platform highlights">
+        {% for value, label in service.stats %}
+          <div>
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 4v6c0 4.4-2.9 7.3-7 8-4.1-.7-7-3.6-7-8V7l7-4z"></path><path d="M9 12l2 2 4-5"></path></svg>
+            <strong>{{ value }}</strong><span>{{ label }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section container reveal" id="service-overview">
+      <p class="section-kicker">Service overview</p>
+      <h2>Built for clarity, speed, and dependable growth.</h2>
+      <p class="section-copy">{{ service.summary }}</p>
+    </section>
+
+    <section class="section container reveal">
+      <p class="section-kicker">Key benefits</p>
+      <h2>Everything essential, without unnecessary complexity.</h2>
+      <div class="cards two">
+        {% for benefit in service.benefits %}
+          <article class="feature-card">
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16"></path><path d="M12 4v16"></path><path d="M7 7l10 10"></path><path d="M17 7L7 17"></path></svg>
+            <span class="benefit-number">0{{ forloop.counter }}</span>
+            <p>{{ benefit }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <p class="section-kicker">cPanel and LiteSpeed</p>
+      <h2>Maximum control features, tuned for fast delivery.</h2>
+      <p class="section-copy">{{ service.panel_note }}</p>
+      <div class="cpanel-grid">
+        {% for feature in service.cpanel_features %}
+          <div>
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>
+            <span>{{ feature }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section container reveal" id="service-pricing">
+      <div class="pricing-head">
+        <div>
+          <p class="section-kicker">Pricing</p>
+          <h2>Choose the plan that fits your workload.</h2>
+        </div>
+      </div>
+      <div class="pricing-card-grid">
+        {% for plan in service.plans %}
+          <article class="pricing-card {% if plan.featured %}is-featured{% endif %}">
+            {% if plan.label %}<span class="plan-ribbon">{{ plan.label }}</span>{% endif %}
+            <div class="pricing-card-head">
+              <h3>{{ plan.name }}</h3>
+              <span class="discount-badge">{{ plan.discount }}</span>
+              <p class="pricing-intent">{{ plan.best_for }}</p>
+            </div>
+            <div class="price-block">
+              <strong>{{ plan.price }}</strong><span>{{ plan.period }}</span>
+              <p>{{ plan.term }}</p>
+            </div>
+            <ul class="feature-check-list">
+              {% for feature in plan.features %}
+                <li>
+                  <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>
+                  <span>{{ feature }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+            <a class="choose-plan-btn {% if plan.featured %}is-primary{% endif %}" href="/#contact">Choose Plan</a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="section container reveal">
+      <div class="final-cta">
+        <p class="section-kicker">Ready to launch</p>
+        <h2>{{ service.title }} with the calm confidence of Cybflows infrastructure.</h2>
+        <div class="hero-actions">
+          <a class="cta blue-cta" href="/#contact">Start Today</a>
+          <a class="ghost" href="/">Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">CYBFLOWS</a>
+        <p>Premium hosting infrastructure built around speed, reliability, and maximum performance per dollar.</p>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <a href="/web-hosting/">Web Hosting</a>
+        <a href="/cloud-hosting/">Cloud Hosting</a>
+        <a href="/vps-hosting/">VPS Hosting</a>
+        <a href="/reseller-hosting/">Reseller Hosting</a>
+      </div>
+      <div>
+        <h3>WordPress</h3>
+        <a href="/managed-wordpress-hosting/">Managed WordPress</a>
+        <a href="/#contact">Migration</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <a href="/#contact">Contact</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+      <p class="footer-bottom">Cybflows &copy; 2026. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const navGroups = document.querySelectorAll('.has-mega');
+    navGroups.forEach((group) => {
+      const trigger = group.querySelector('.nav-trigger');
+      group.addEventListener('mouseenter', () => trigger.setAttribute('aria-expanded', 'true'));
+      group.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded', 'false'));
+      trigger.addEventListener('focus', () => trigger.setAttribute('aria-expanded', 'true'));
+      group.addEventListener('focusout', (event) => {
+        if (!group.contains(event.relatedTarget)) trigger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const menuClose = document.getElementById('menuClose');
+    const drawer = document.getElementById('mobileDrawer');
+    const setDrawer = (open) => {
+      drawer.classList.toggle('open', open);
+      drawer.setAttribute('aria-hidden', String(!open));
+      menuToggle.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('no-scroll', open);
+    };
+    menuToggle.addEventListener('click', () => setDrawer(true));
+    menuClose.addEventListener('click', () => setDrawer(false));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>

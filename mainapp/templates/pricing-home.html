@@ -1,0 +1,385 @@
+<style>
+    *, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Header Section */
+.pricing-section {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.pricing-header h1 {
+    font-size: var(--font-size-title-2);
+    margin-bottom: 1rem;
+}
+
+.header-benefits {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    font-size: var(--font-size-body-2);
+}
+
+.header-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.header-benefits svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: var(--check-color);
+}
+
+.plan-duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--font-size-body-2);
+}
+
+.plan-duration select {
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-xs);
+    border: 0.0625rem solid var(--card-border);
+    font-family: var(--font-sans);
+}
+
+/* Pricing Grid */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* Individual Cards */
+.card {
+    background: var(--bg-color);
+    border: 0.0625rem solid var(--card-border);
+    border-radius: var(--radius-l);
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card.popular {
+    border: 0.125rem solid var(--primary-color);
+}
+
+.popular-tag {
+    position: absolute;
+    top: -0.875rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary-color);
+    color: white;
+    font-size: var(--font-size-caption);
+    font-weight: bold;
+    padding: 0.25rem 1rem;
+    border-radius: 1rem;
+}
+
+.card-header h2 {
+    font-size: var(--font-size-heading-1);
+    margin: 0 0 0.5rem 0;
+}
+
+.card-header p {
+    font-size: var(--font-size-body-2);
+    color: var(--text-color-muted);
+    margin: 0 0 1.5rem 0;
+    min-height: 2.5rem;
+}
+
+/* Pricing Typography */
+.price-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.currency {
+    font-size: var(--font-size-heading-1);
+    margin-top: 0.25rem;
+}
+
+.price {
+    font-size: var(--font-size-title-1);
+    font-weight: bold;
+    line-height: 1;
+}
+
+.period {
+    font-size: var(--font-size-body-1);
+    align-self: flex-end;
+    margin-bottom: 0.25rem;
+}
+
+.price-context {
+    font-size: var(--font-size-body-3);
+    color: var(--text-color-muted);
+    margin-bottom: 1.5rem;
+    min-height: 2rem;
+}
+
+/* Buttons */
+.btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: var(--radius-s);
+    font-size: var(--font-size-body-1);
+    font-weight: bold;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all 0.2s ease;
+    margin-bottom: 1rem;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 0.0625rem solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background: rgba(0, 68, 255, 0.05);
+}
+
+.btn-solid {
+    background: var(--primary-color);
+    border: 0.0625rem solid var(--primary-color);
+    color: white;
+}
+
+.btn-solid:hover {
+    background: var(--primary-hover-color);
+}
+
+/* Badges & Features */
+.renewal-badge {
+    background: var(--badge-bg-green);
+    color: var(--check-color);
+    font-size: var(--font-size-caption);
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: var(--radius-xs);
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    flex-grow: 1;
+}
+
+.feature-list li {
+    font-size: var(--font-size-body-2);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 0.0625rem dashed #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list li.disabled {
+    color: #999;
+}
+
+.feature-list svg.check {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: var(--check-color);
+    flex-shrink: 0;
+}
+
+.feature-list svg.cross {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: #999;
+    flex-shrink: 0;
+}
+
+.badge {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+}
+
+.badge-blue { background: var(--badge-bg-blue); color: var(--primary-color); }
+.badge-green { background: var(--badge-bg-green); color: var(--check-color); }
+
+.see-all-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-weight: bold;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    margin-top: auto;
+}
+</style>
+
+
+<div class="pricing-section">
+    <div class="pricing-header">
+        <h1>Same price at renewal. Guaranteed.</h1>
+        <ul class="header-benefits">
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Choose monthly or long-term</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 24/7 expert support</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 99.9% uptime guarantee</li>
+            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Free migration included</li>
+        </ul>
+    </div>
+
+    <div class="pricing-grid">
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Starter</h2>
+                <p>Great for first-time users.</p>
+            </div>
+            <div class="price-container">
+                <span class="currency">₹</span>
+                <span class="price">399.00</span>
+                <span class="period">/mo</span>
+            </div>
+            <p class="price-context">For 1 month, you pay ₹399.00 today – no price increase.</p>
+            <button class="btn btn-outline">Choose Plan</button>
+            <div class="renewal-badge">Same Price at Renewal — Guaranteed</div>
+            
+            <ul class="feature-list">
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>1</b> website</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>Free domain for 1 year</b></li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>10</b> GB NVMe storage</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Daily backups</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>1</b> email account <span class="badge badge-blue">FREE</span></li>
+                <li class="disabled"><svg class="cross" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Node.js web apps</li>
+            </ul>
+            
+        </div>
+
+        <div class="card popular">
+            <div class="popular-tag">MOST POPULAR</div>
+            <div class="card-header">
+                <h2>Premium</h2>
+                <p>Best for blogs & startup websites.</p>
+            </div>
+            <div class="price-container">
+                <span class="currency">₹</span>
+                <span class="price">499.00</span>
+                <span class="period">/mo</span>
+            </div>
+            <p class="price-context">For 1 month, you pay ₹499.00 today – no price increase.</p>
+            <button class="btn btn-solid">Choose Plan</button>
+            <div class="renewal-badge">Same Price at Renewal — Guaranteed</div>
+            
+            <ul class="feature-list">
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>25</b> websites</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>Free domain for 1 year</b></li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>50</b> GB NVMe storage</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Daily backups</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>50</b> email accounts <span class="badge badge-blue">FREE</span></li>
+                <li class="disabled"><svg class="cross" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> Node.js web apps</li>
+            </ul>
+            
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Business</h2>
+                <p>Optimized for growing businesses.</p>
+            </div>
+            <div class="price-container">
+                <span class="currency">₹</span>
+                <span class="price">599.00</span>
+                <span class="period">/mo</span>
+            </div>
+            <p class="price-context">For 1 month, you pay ₹599.00 today – no price increase.</p>
+            <button class="btn btn-outline">Choose Plan</button>
+            <div class="renewal-badge">Same Price at Renewal — Guaranteed</div>
+            
+            <ul class="feature-list">
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>50</b> websites</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>Free domain for 1 year</b></li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>100</b> GB NVMe storage</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Daily & On-Demand Backups</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>5</b> Node.js web apps <span class="badge badge-green">NEW</span></li>
+            </ul>
+            
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h2>Cloud Startup</h2>
+                <p>20x more power with cloud hosting.</p>
+            </div>
+            <div class="price-container">
+                <span class="currency">₹</span>
+                <span class="price">1,499.00</span>
+                <span class="period">/mo</span>
+            </div>
+            <p class="price-context">For 1 month, you pay ₹1,499.00 today – no price increase.</p>
+            <button class="btn btn-outline">Choose Plan</button>
+            <div class="renewal-badge">Same Price at Renewal — Guaranteed</div>
+            
+            <ul class="feature-list">
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>100</b> websites</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>Free domain for 1 year</b></li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>150</b> GB NVMe storage</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Daily & On-Demand Backups</li>
+                <li><svg class="check" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> <b>10</b> Node.js web apps <span class="badge badge-green">NEW</span></li>
+            </ul>
+            
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Add logic for the "See all features" toggle buttons
+    const expandButtons = document.querySelectorAll('.see-all-btn');
+
+    expandButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Placeholder logic to expand/collapse additional features
+            const svgIcon = button.querySelector('svg');
+            
+            if (button.classList.contains('expanded')) {
+                button.classList.remove('expanded');
+                svgIcon.style.transform = 'rotate(0deg)';
+                // Logic to hide extra elements goes here
+            } else {
+                button.classList.add('expanded');
+                svgIcon.style.transform = 'rotate(180deg)';
+                // Logic to show extra elements goes here
+            }
+        });
+    });
+});
+</script>

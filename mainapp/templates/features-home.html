@@ -1,0 +1,697 @@
+<style>
+    /* Base & Variables */
+.manage-dashboard-section {
+  --primary: #0055ff;
+  --bg-light: #f4f7fb;
+  --border-color: #d6e3f5;
+  --text-main: #111;
+  --text-muted: #555;
+  --white: #ffffff;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  
+  font-family: 'DM Sans', system-ui, sans-serif;
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  color: var(--text-main);
+  box-sizing: border-box;
+}
+
+.manage-dashboard-section * {
+  box-sizing: border-box;
+}
+
+/* Header */
+.md-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.md-header h2 {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.md-header p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Showcase Container */
+.md-showcase {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto 5rem auto;
+}
+
+/* Main Dashboard UI */
+.md-dashboard-ui {
+  display: flex;
+  background: var(--white);
+  border: 4px solid #dce8fa;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  min-height: 500px;
+}
+
+/* Sidebar */
+.md-sidebar {
+  width: 240px;
+  background: var(--bg-light);
+  border-right: 1px solid var(--border-color);
+  padding: 1.5rem 1rem;
+  flex-shrink: 0;
+}
+
+.md-logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  padding-left: 0.5rem;
+  color: #222;
+}
+
+.md-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.md-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.md-nav-item:hover {
+  background: #eef2f8;
+}
+
+.md-nav-item.active {
+  background: #e6f0ff;
+  color: var(--primary);
+}
+
+.md-nav-item svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Content Area */
+.md-content {
+  flex: 1;
+  padding: 2rem;
+  background: var(--bg-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0; /* Prevents overflow */
+}
+
+.md-content-header {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Grid Layouts */
+.md-grid-top {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 1.5rem;
+}
+
+.md-grid-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.md-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.md-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Score Card & Gauge */
+.md-score-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.md-score-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.md-gauge {
+  position: relative;
+  width: 140px;
+  height: 70px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.md-gauge-bg {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 14px solid #eef2f8;
+  border-radius: 50%;
+}
+
+.md-gauge-fill {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 14px solid var(--primary);
+  border-radius: 50%;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  transform: rotate(45deg); 
+}
+
+.md-gauge-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.md-gauge-subtext {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+  font-weight: 500;
+}
+
+/* Right Panel */
+.md-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.md-url-bar {
+  background: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+}
+
+.md-toggles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.md-toggle-card {
+  background: var(--white);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Mock Switch */
+.md-switch {
+  width: 36px;
+  height: 20px;
+  background: var(--border-color);
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.md-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.md-switch.active {
+  background: var(--primary);
+}
+
+.md-switch.active::after {
+  transform: translateX(16px);
+}
+
+.md-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.md-action-btn {
+  background: var(--white);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.md-action-btn:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* Bottom Tables/Progress */
+.md-table-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #888;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.md-table-mock {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.md-table-mock-row {
+  height: 8px;
+  background: #eef2f8;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+.md-table-mock-row:nth-child(1) { width: 100%; }
+.md-table-mock-row:nth-child(2) { width: 90%; }
+.md-table-mock-row:nth-child(3) { width: 95%; }
+.md-table-mock-row:nth-child(4) { width: 85%; }
+
+.md-usage-label {
+  font-size: 0.75rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.md-progress-mock {
+  height: 8px;
+  background: #eef2f8;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.md-progress-fill {
+  height: 100%;
+  background: #8ab4f8;
+  border-radius: 4px;
+}
+
+.md-usage-stat {
+  font-size: 0.75rem;
+  color: #888;
+  margin-bottom: 1.25rem;
+}
+
+/* Floating Elements */
+.md-floating {
+  position: absolute;
+  background: var(--white);
+  border: 3px solid #dce8fa;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 48px rgba(0,68,255,0.1);
+  z-index: 10;
+}
+
+.md-float-left {
+  bottom: -30px;
+  left: -80px;
+  width: 280px;
+  padding: 1.5rem;
+  transform: rotate(-6deg);
+}
+
+.md-float-left-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.md-float-left-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.md-icon-circle {
+  background: #333;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+}
+
+.md-float-right {
+  bottom: 40px;
+  right: -50px;
+  width: 240px;
+  padding: 1rem 1.5rem;
+  transform: rotate(5deg);
+}
+
+.md-analytics-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: right;
+  color: #666;
+}
+
+.md-float-right-chart {
+  height: 80px;
+  background: linear-gradient(180deg, transparent 50%, #e8f0fe 50%);
+  border-bottom: 2px solid var(--primary);
+  margin-top: 0.5rem;
+  position: relative;
+}
+
+/* Simple visual mock of a chart */
+.md-float-right-chart::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 10%;
+  width: 8px; height: 30px;
+  background: var(--primary);
+  border-radius: 4px 4px 0 0;
+  box-shadow: 20px 20px 0 var(--primary), 40px -10px 0 var(--primary), 60px 10px 0 var(--primary);
+}
+
+/* Features Bottom Section */
+.md-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.5rem;
+  margin-top: 5rem;
+}
+
+.md-feature-item svg {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+.md-feature-item h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.md-feature-item p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .md-float-left, .md-float-right {
+    display: none; /* Hide floating elements on smaller screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .md-grid-top {
+    grid-template-columns: 1fr;
+  }
+  .md-score-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .md-dashboard-ui {
+    flex-direction: column;
+  }
+  .md-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem;
+  }
+  .md-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 0.5rem;
+  }
+  .md-nav-item {
+    white-space: nowrap;
+  }
+  .md-content {
+    padding: 1rem;
+  }
+  .md-toggles, .md-actions, .md-grid-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+\
+<div class="manage-dashboard-section">
+  <div class="md-header">
+    <h2>Manage everything from one dashboard</h2>
+    <p>Our easy-to-use dashboard helps you manage your website, emails, and backups without any confusion. Just log in and start.</p>
+  </div>
+
+  <div class="md-showcase">
+    <div class="md-dashboard-ui">
+      <div class="md-sidebar">
+        <div class="md-logo">MilesWeb</div>
+        <div class="md-nav">
+          <div class="md-nav-item active">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.56c-.59-.34-1.26-.54-1.9-.54h-1v-2c0-.55-.45-1-1-1h-4v-2h2c1.1 0 2-.9 2-2V7h2c1.1 0 2 .9 2 2v5.5c0 1.25-.33 2.43-.9 3.44z"/></svg>
+            Domain
+          </div>
+          <div class="md-nav-item">
+            <svg viewBox="0 0 24 24"><path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm0 14H5V8h14v10z"/></svg>
+            Website
+          </div>
+          <div class="md-nav-item">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 9h-2V7h-2v5H6v2h2v5h2v-5h2v-2z"/></svg>
+            AI Website Builder
+          </div>
+          <div class="md-nav-item">
+            <svg viewBox="0 0 24 24"><path d="M16 11V5.5C16 3.57 14.43 2 12.5 2S9 3.57 9 5.5V11H7v11h10V11h-1zm-4.5-7C12.33 4 13 4.67 13 5.5V11h-3V5.5C10 4.67 10.67 4 11.5 4z"/></svg>
+            SSL & Security
+          </div>
+          <div class="md-nav-item">
+            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-8 14H7v-2h4v2zm4-4H7v-2h8v2zm0-4H7V7h8v2z"/></svg>
+            Backups
+          </div>
+        </div>
+      </div>
+
+      <div class="md-content">
+        <div class="md-content-header">Dashboard</div>
+        
+        <div class="md-grid-top">
+          <div class="md-card md-score-card">
+            <div class="md-score-card-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--primary)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              Page Speed Score
+            </div>
+            <div class="md-gauge">
+              <div class="md-gauge-bg"></div>
+              <div class="md-gauge-fill"></div>
+              <div class="md-gauge-text">95</div>
+            </div>
+            <div class="md-gauge-subtext">Desktop Performance</div>
+          </div>
+
+          <div class="md-right-panel">
+            <div class="md-url-bar">
+              <span><b>Website</b> - www.coffeeatclub.com</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#888"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg>
+            </div>
+            <div class="md-toggles">
+              <div class="md-toggle-card">
+                LiteSpeed Cache <div class="md-switch active"></div>
+              </div>
+              <div class="md-toggle-card">
+                Web Application Firewall (WAF) <div class="md-switch active"></div>
+              </div>
+            </div>
+            <div class="md-actions">
+              <div class="md-action-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#2271b1"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.3 15.65c-1.63 0-3.08-.6-4.22-1.58l3.15-8.61c.21-.57.32-1.18.32-1.8 0-.41-.05-.81-.13-1.2.66.42 1.25 1 1.74 1.68.74 1.04 1.18 2.33 1.18 3.71 0 1.95-.91 3.68-2.32 4.8-.46.36-1.02.66-1.63.85l1.9-5.22c.07-.19.11-.39.11-.6 0-.75-.43-1.42-1.1-1.74-.23-.11-.49-.17-.76-.17-.3 0-.58.07-.84.2l-1.9 5.22c-.65-.18-1.26-.49-1.8-.89L9.4 12c-.22-.61-.34-1.26-.34-1.93 0-1.29.49-2.48 1.3-3.38.74-.83 1.77-1.39 2.92-1.56C13.2 5.04 13.12 5 13 5c-3.87 0-7 3.13-7 7s3.13 7 7 7c.64 0 1.26-.09 1.85-.24l-2.55-1.11z"/></svg>
+                WordPress
+              </div>
+              <div class="md-action-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#555"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                File Manager
+              </div>
+              <div class="md-action-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#555"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                Databases
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="md-grid-bottom">
+          <div class="md-card">
+            <div class="md-card-title">Email Accounts</div>
+            <div class="md-table-header">
+              <span>Email Address</span><span>Status</span><span>Mailbox Usage</span><span>DKIM</span>
+            </div>
+            <div class="md-table-mock">
+              <div class="md-table-mock-row"></div>
+              <div class="md-table-mock-row"></div>
+              <div class="md-table-mock-row"></div>
+              <div class="md-table-mock-row"></div>
+            </div>
+          </div>
+          <div class="md-card">
+            <div class="md-card-title">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--primary)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              Account Usage
+            </div>
+            
+            <div class="md-usage-label">Disk Space</div>
+            <div class="md-progress-mock"><div class="md-progress-fill" style="width: 25%;"></div></div>
+            <div class="md-usage-stat">257.84 MB of 100 GB used</div>
+            
+            <div class="md-usage-label">Bandwidth</div>
+            <div class="md-progress-mock"><div class="md-progress-fill" style="width: 60%;"></div></div>
+            <div class="md-usage-stat">1.28 GB of ∞</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-floating md-float-left">
+      <div class="md-float-left-list">
+        <div class="md-float-left-item">
+          AI WordPress Speed Optimizer 
+          <span class="md-icon-circle">W</span>
+        </div>
+        <div class="md-float-left-item">
+          2-Factor Authentication (2FA)
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="md-float-left-item">
+          SSH & WP-CLI
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="md-floating md-float-right">
+      <div class="md-analytics-title">Analytics</div>
+      <div class="md-float-right-chart"></div>
+    </div>
+  </div>
+
+  <div class="md-features">
+    <div class="md-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 12a4 4 0 0 1 8 0"></path><path d="M12 8v8"></path></svg>
+      <h3>Install WordPress</h3>
+      <p>Launch your site instantly with our one-click installer — just click and go live.</p>
+    </div>
+    <div class="md-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+      <h3>Create Emails</h3>
+      <p>Create business emails in seconds and stay connected with your customers easily.</p>
+    </div>
+    <div class="md-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      <h3>Manage Files</h3>
+      <p>Upload, edit, and organize your website files easily from the control panel or via FTP.</p>
+    </div>
+    <div class="md-feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+      <h3>Daily Backups</h3>
+      <p>Your site and emails are backed up daily. Restore your files instantly when needed.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Toggle Switch Logic
+  const switches = document.querySelectorAll('.md-switch');
+  
+  switches.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+
+  // Sidebar Nav Logic (Mock active state)
+  const navItems = document.querySelectorAll('.md-nav-item');
+  
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      navItems.forEach(nav => nav.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+</script>
