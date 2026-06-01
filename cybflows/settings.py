@@ -22,7 +22,7 @@ if not SECRET_KEY:
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "False").strip().lower() == "true"
 
-_raw_hosts = os.environ.get("DJANGO_ALLOWED_HOSTS", "")
+_raw_hosts = "https://cybflows.com","https://www.cybflows.com"
 ALLOWED_HOSTS = [h.strip() for h in _raw_hosts.split(",") if h.strip()] if _raw_hosts else []
 
 # Trusted origins for CSRF (required when behind a proxy / custom domain)
