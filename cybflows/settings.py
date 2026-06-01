@@ -13,7 +13,7 @@ load_dotenv(BASE_DIR / ".env")
 # ---------------------------------------------------------------------------
 # Core security
 # ---------------------------------------------------------------------------
-SECRET_KEY = os.environ.get("znwb7+vm(r&c1i+blz+-s_n#t+o+&+foz_z=x)u&56x924*+52", "")
+SECRET_KEY = "znwb7+vm(r&c1i+blz+-s_n#t+o+&+foz_z=x)u&56x924*+52"
 if not SECRET_KEY:
     raise RuntimeError(
         "znwb7+vm(r&c1i+blz+-s_n#t+o+&+foz_z=x)u&56x924*+52 environment variable is not set. "
