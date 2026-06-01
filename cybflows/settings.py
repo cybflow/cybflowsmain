@@ -13,10 +13,10 @@ load_dotenv(BASE_DIR / ".env")
 # ---------------------------------------------------------------------------
 # Core security
 # ---------------------------------------------------------------------------
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "")
+SECRET_KEY = os.environ.get("znwb7+vm(r&c1i+blz+-s_n#t+o+&+foz_z=x)u&56x924*+52", "")
 if not SECRET_KEY:
     raise RuntimeError(
-        "DJANGO_SECRET_KEY environment variable is not set. "
+        "znwb7+vm(r&c1i+blz+-s_n#t+o+&+foz_z=x)u&56x924*+52 environment variable is not set. "
         "Generate one with: python -c \"from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())\""
     )
 
