@@ -1,6 +1,6 @@
 Django>=6.0,<7.0
 whitenoise[brotli]>=6.8,<7.0
 gunicorn>=22.0,<23.0
-python-dotenv==1.0.0  # or whatever version you prefer
+python-dotenv>=1.0.0  # or whatever version you prefer
 # Uncomment for PostgreSQL support:
 # psycopg[binary]>=3.1,<4.0
